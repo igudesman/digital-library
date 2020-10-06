@@ -9,6 +9,7 @@ app = Flask(__name__)
 main_context = context.MainContext()
 user_context = context.UserContext(main_context)
 
+
 @app.route('/api/login')
 def login():
     username = request.args.get("user_name")
@@ -92,10 +93,6 @@ def delete_post():
         main_list.delete_one({"_id": collection.ObjectId(post_id)})
         return ""
     return "Access denied"
-
-
-
-
 
 
 if __name__ == '__main__':
