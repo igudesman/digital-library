@@ -20,15 +20,19 @@ from django.conf.urls.static import static
 from upload import views
 from registration.views import signup_view, home_view
 from django.views.generic import RedirectView
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('home.urls')),
+    path('home/', home_view, name='home'),
     path('upload/', views.upload, name='upload'),
     path('signup/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     # path('', include('registration.urls')),
-    path('catalog/', RedirectView.as_view(url='/signup/', permanent=True)),
+    path('catalog/', RedirectView.as_view(url='/home/', permanent=True)),
+    path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
+path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
 ]
 
 if settings.DEBUG:

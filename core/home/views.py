@@ -4,7 +4,7 @@ from upload.models import UploadedFile
 
 def home(request):
     context = parse_data()
-    return render(request, 'home/home.html', context)
+    return render(request, 'index.html', context)
 
 
 def parse_data():

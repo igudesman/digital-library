@@ -22,14 +22,16 @@
         <div class="col-sm-2">
             {% block sidebar %}
             <ul class="sidebar-nav">
-                <li><a href="">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 {% if user.is_authenticated %}
                     <li>User: {{ user.get_username }}</li>
                     <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                    <li><a href="{% url 'password_change'%}?next={{request.path}}">Change password</a></li>
                 {% else %}
                     <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                    <li><a href="{% url 'password_reset'%}?next={{request.path}}">Reset password</a></li>
                 {% endif %}
-                <li><a href="{% url 'signup' %}">Registrate</a></li>
+                <li><a href="{% url 'signup' %}?next={{request.path}}">Registrate</a></li>
             </ul>
             {% endblock %}
         </div>
