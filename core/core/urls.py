@@ -18,11 +18,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from upload import views
+from registration.views import signup_view, home_view
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
+    #path('', include('home.urls')),
     path('upload/', views.upload, name='upload'),
+    path('signup/', signup_view, name='signup'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # path('', include('registration.urls')),
+    path('catalog/', RedirectView.as_view(url='/signup/', permanent=True)),
 ]
 
 if settings.DEBUG:
