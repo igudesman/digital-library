@@ -21,15 +21,12 @@ def signup_view(request):
         email = form.cleaned_data.get('email')
         password = BaseUserManager().make_random_password()
 
-        try:
-            send_mail(
-                f"Registration Electronic library",
-                f"Hello!\nYour login: {username}, password: {password}\nUse it to registrate in platform\n",
-                settings.EMAIL_HOST_USER,
-                [email,]
-            )
-        except BaseException:
-            print("Упс, почту мою залочил майл!")
+        send_mail(
+            f"Registration Electronic library",
+            f"Hello!\nYour login: {username}, password: {password}\nUse it to registrate in platform\n",
+            settings.EMAIL_HOST_USER,
+            [email,]
+        )
 
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
