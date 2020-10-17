@@ -36,6 +36,17 @@
             {% endblock %}
         </div>
         <div class="col-sm-10 ">
+
+            <div class="search-bar mt-sm-2 mr-2">
+                <form method="get">
+                    <input type="text" class='form-control' name="q" id = 'id_q' placeholder="Search...">
+
+                </form>
+
+            </div>
+
+
+
             {% block content %}{% endblock %}
             {% block pagination %}
             {% if is_paginated %}

@@ -32,7 +32,7 @@ urlpatterns = [
     # path('', include('registration.urls')),
     path('catalog/', RedirectView.as_view(url='/home/', permanent=True)),
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
-path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
 ]
 
 if settings.DEBUG:
