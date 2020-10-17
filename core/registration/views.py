@@ -21,6 +21,10 @@ def signup_view(request):
         email = form.cleaned_data.get('email')
         password = BaseUserManager().make_random_password()
 
+        if User.objects.get(username__exact=username).count() > 0:
+            print("Change username!")
+
+
         try:
             send_mail(
                 f"Registration Electronic library",

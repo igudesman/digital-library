@@ -146,6 +146,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = "electronic-library@mail.ru"
-EMAIL_HOST_PASSWORD = "ILoveCPP2020"
+EMAIL_HOST_PASSWORD = "ILoveCPP2021"
 EMAIL_USE_TLS = True
 
