@@ -32,6 +32,7 @@
                     <li><a href="{% url 'password_reset'%}?next={{request.path}}">Reset password</a></li>
                 {% endif %}
                 <li><a href="{% url 'signup' %}?next={{request.path}}">Registrate</a></li>
+                <li><a href="/admin/">Admin panel</a></li>
             </ul>
             {% endblock %}
         </div>
@@ -67,6 +68,10 @@
             {% endblock %}
         </div>
     </div>
+
+    <script type="text/javascript">
+        document.getElementById("id_q").value = "{{query}}"
+    </script>
 
 </div>
 </body>

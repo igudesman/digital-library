@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'registration.apps.RegistrationConfig',
+    'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +71,8 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'search/templates/search'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
