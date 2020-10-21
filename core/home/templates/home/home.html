@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+    
+</head>
+<body>
+
+<div class="main">
+
+    <div class="header">
+
+        <div class="logo">
+            <div class="logo_text">
+                <h1><a href="/">InnoLibrary</a></h1>
+                <h2>*here date and time will be placed*</h2>
+            </div>
+        </div>
+
+        <div class="searchBar">
+
+            <form method="post" action="#" id="search_form">
+
+                <input type="search" name="search_field" placeholder="type name/author/course and proper material will be shown" />
+                <input type="submit" class="btn" value="search" />
+
+            </form>
+
+        </div>
+
+        <div class="criteriaBar">
+
+            <ul class="criteria">
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Years</a></li>
+                <li><a href="#">Authors</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <section class="most-search spad">
+        <div class="content">
+
+            <h1>Book description</h1>
+                <div class="row">
+                    {% for material in material_list %}
+                        <img src="{% static 'home/img/OS.png' %}" width="150" height="230">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="listing__item">
+                                <h6>Author: {{ material.author }}</h6>
+                                <h6>Type: {{ material.date_publication }}</h6>
+                                <h6>Title: {{ material.title }}</h6>
+                            </div>
+                            <input type="submit" class="btn" value="download">
+                        </div>
+
+                    {% endfor %}
+                </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
