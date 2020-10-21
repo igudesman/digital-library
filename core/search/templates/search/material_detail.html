@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ material.title }}</h1>
+  <p><strong>Author:</strong> {{ material.author }}</p>
+  <p><strong>Date of publication:</strong> {{ material.date_publication }}</p>
+  <p><strong>Time of publication:</strong> {{ material.time_publication }}</p>
+  <p><strong>Tags:</strong> {% for tag in material.tags.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+  <form>
+      <button>Download</button>
+  </form>
+  </div>
+{% endblock %}
