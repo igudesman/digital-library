@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, StreamingHttpResponse, Http404
 from django.views import generic
 from search.models import Material
 from search.views import get_material_queryset
@@ -20,6 +20,10 @@ def home_view(request):
         material_list = sorted(get_material_queryset(query), key=attrgetter('date_publication'), reverse=True)
     context['material_list'] = material_list
     return render(request, 'material_list.html', context)
+
+
+
+
 
 class MaterialDetailView(generic.DetailView):
     model = Material

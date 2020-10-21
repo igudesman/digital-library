@@ -1,6 +1,8 @@
+from django.http import StreamingHttpResponse, Http404, HttpResponse, FileResponse
 from django.shortcuts import render
 from .models import Material
 from django.db.models import Q
+import os
 
 
 # Create your views here.
@@ -25,3 +27,13 @@ def get_material_queryset(query=None):
             queryset.append(material)
 
     return list(set(queryset))
+
+
+def file_download(request, file_path):
+    try:
+        response = FileResponse(open(file_path, 'rb'))
+        response['content_type'] = "application/octet-stream"
+        response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
+        return response
+    except Exception:
+        raise Http404
