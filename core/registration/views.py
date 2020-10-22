@@ -12,7 +12,7 @@ from django.conf import settings
 from search.views import get_material_queryset
 from search.models import Material
 from operator import attrgetter
-
+from home.views import home_view
 
 def signup_view(request):
     form = SignUpForm(request.POST)

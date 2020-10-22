@@ -53,29 +53,35 @@ from home.views import home_view
 
 
 def upload(request):
-    form = UploadedFileForm()
 
-    if form.is_valid():
-        name = None
-        for filename, file in request.FILES.iteritems():
-            name = request.FILES[filename].name
+    if request.method == 'POST':
+        print("POST")
+        form = UploadedFileForm(request.POST, request.FILES)
 
-        material = Material.objects.create(
-            who_added_username='Will add later',
-            date_publication=datetime.datetime.now(),
-            time_publication=datetime.datetime.now(),
-            title=form.cleaned_data.get('title'),
-            author=form.cleaned_data.get('author'),
-            tags=form.cleaned_data.get('tags'),
-            file=form.cleaned_data.get('file'),
-            file_name=name,
-            visibility='0'
-        )
+        print("Errors: ", form.errors)
 
-        material.save()
+        if form.is_valid():
 
-        print("Material:", name, "was uploaded!")
+            material = Material.objects.create(
+                who_added_username='Will add later',
+                date_publication=datetime.datetime.now(),
+                time_publication=datetime.datetime.now(),
+                title=form.cleaned_data.get('title'),
+                author=form.cleaned_data.get('author'),
+                file=form.cleaned_data.get('file'),
+                file_name=request.FILES['file'],
+                visibility='0'
+            )
 
-        return home_view(request)
+            material.tags.set(form.cleaned_data.get('tags'))
+
+            material.save()
+
+            print("Material:", request.FILES['file'], "was uploaded!")
+
+            return home_view(request)
+
+    else:
+        form = UploadedFileForm()
 
     return render(request, 'upload.html', context={'form': form})
