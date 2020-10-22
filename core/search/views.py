@@ -19,7 +19,8 @@ def get_material_queryset(query=None):
             (Q(title__icontains=q) |
              Q(author__icontains=q) |
              Q(file_name__icontains=q) |
-             Q(author__icontains=q)) &
+             Q(author__icontains=q) |
+             Q(tags__tag=q)) &
             Q(visibility__icontains='1')
         ).distinct()
 
