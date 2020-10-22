@@ -20,7 +20,11 @@ def home_view(request):
     else:
         material_list = sorted(get_material_queryset(query), key=attrgetter('date_publication'), reverse=True)
     context['material_list'] = material_list
-    return render(request, 'material_list.html', context)
+    return render(request, 'home/home.html', context)
+
+
+
+
 
 
 
