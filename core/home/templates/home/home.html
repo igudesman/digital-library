@@ -61,7 +61,11 @@
                                 <h6>Type: {{ material.date_publication }}</h6>
                                 <h6>Title: {{ material.title }}</h6>
                             </div>
-                            <input type="submit" class="btn" value="download">
+
+                            <form method="POST" action= {% url "material" material.id %}> 
+                                {% csrf_token %}
+                                <input type="submit" class="btn" value="download">
+                            </form>
                         </div>
 
                     {% endfor %}

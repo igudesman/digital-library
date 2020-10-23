@@ -31,6 +31,7 @@ def get_material_queryset(query=None):
 
 
 def file_download(request, file_path):
+    print(file_path)
     try:
         response = FileResponse(open(file_path, 'rb'))
         response['content_type'] = "application/octet-stream"
@@ -38,3 +39,9 @@ def file_download(request, file_path):
         return response
     except Exception:
         raise Http404
+
+def material_page(request, material_id):
+    context = {}
+    material = Material.objects.filter(pk=material_id)
+    context['material'] = material[0]
+    return render(request, 'search/material_detail.html', context)

@@ -85,4 +85,4 @@ def upload(request):
     else:
         form = UploadedFileForm()
 
-    return render(request, 'upload.html', context={'form': form})
+    return render(request, 'upload/upload.html', context={'form': form})

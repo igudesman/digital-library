@@ -34,7 +34,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/home/', permanent=True)),
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('file/', include('search.urls')),
+    path('', include('search.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)

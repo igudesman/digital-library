@@ -23,12 +23,5 @@ def home_view(request):
     return render(request, 'home/home.html', context)
 
 
-
-
-
-
-
-
-
 class MaterialDetailView(generic.DetailView):
     model = Material
