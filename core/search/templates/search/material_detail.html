@@ -1,4 +1,4 @@
-{% extends "base_generic.html" %}
+{% extends "base.html" %}
 
 {% block content %}
   <h1>Title: {{ material.title }}</h1>
@@ -7,8 +7,5 @@
   <p><strong>Time of publication:</strong> {{ material.time_publication }}</p>
   <p><strong>Tags:</strong> {% for tag in material.tags.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 
-  <form>
-      <button>Download</button>
-  </form>
-  </div>
+  <a href="/download{{material.file.url}}" download>Download</a>
 {% endblock %}

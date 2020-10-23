@@ -35,3 +35,7 @@ class Material(models.Model):
 
     def get_absolute_url(self):
         return reverse('material-detail', args=[str(self.id)])
+
+
+class Reference(models.Model):
+    reference = models.OneToOneField(Material, on_delete=models.CASCADE)
