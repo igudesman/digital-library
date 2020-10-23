@@ -10,8 +10,9 @@ def home_view(request):
     context = {}
 
     query = ""
-    if request.GET:
-        query = request.GET['q']
+    if request.POST:
+        print(request.POST)
+        query = request.POST['search_field']
         context['query'] = str(query)
 
     if query == "":
