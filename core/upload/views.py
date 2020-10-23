@@ -8,6 +8,8 @@ import datetime
 
 from home.views import home_view
 
+from django.contrib.auth.decorators import login_required
+
 
 # def upload(request):
 #     status = True
@@ -51,7 +53,7 @@ from home.views import home_view
 #
 #     return render(request, 'upload/upload.html', context)
 
-
+@login_required
 def upload(request):
     if request.method == 'POST':
         print("POST")
