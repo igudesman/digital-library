@@ -1,8 +1,11 @@
 from django import forms
-from .models import UploadedFile
 from search.models import Material, Tag
 
 class UploadedFileForm(forms.Form):
+    """
+    Actual form for downmloading material
+    TODO(add checks like can not download file with the same name)
+    """
     title = forms.CharField(max_length=50, help_text="title")
     author = forms.CharField(max_length=50, help_text="Author")
 
@@ -11,8 +14,4 @@ class UploadedFileForm(forms.Form):
     )
 
     file = forms.FileField(help_text="Upload material")
-
-    # class Meta:
-    #     model = Material
-    #     fields = ['title', 'author', 'tags', 'file',]
 

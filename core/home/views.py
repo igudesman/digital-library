@@ -7,6 +7,9 @@ from search.views import get_material_queryset
 from operator import attrgetter
 
 def home_view(request):
+    """
+    Generates home view. If search request is empty, shows all material that in the site (visibility='1')
+    """
     context = {}
 
     query = ""

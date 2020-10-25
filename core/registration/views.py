@@ -15,6 +15,9 @@ from operator import attrgetter
 from home.views import home_view
 
 def signup_view(request):
+    """
+    This view generates view for sign up form.
+    """
     form = SignUpForm(request.POST)
     if form.is_valid():
         username = form.cleaned_data.get('username')

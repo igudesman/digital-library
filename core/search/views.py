@@ -6,10 +6,13 @@ import os
 
 
 # Create your views here.
-
+# TODO( сделать нормальну закрузку материалов, а не то, что у нас)
 
 # Word by word finding matches
 def get_material_queryset(query=None):
+    """
+    Retrieve all materials bu the query in search bar
+    """
     queryset = []
 
     queries = query.split(" ")  # Split query into words
@@ -40,8 +43,11 @@ def file_download(request, file_path):
     except Exception:
         raise Http404
 
+
 def material_page(request, material_id):
     context = {}
     material = Material.objects.filter(pk=material_id)
     context['material'] = material[0]
     return render(request, 'search/material_detail.html', context)
+
+
