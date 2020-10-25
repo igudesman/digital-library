@@ -7,5 +7,9 @@
   <p><strong>Time of publication:</strong> {{ material.time_publication }}</p>
   <p><strong>Tags:</strong> {% for tag in material.tags.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 
-  <a href="/download{{material.file.url}}" download>Download</a>
+    {% if user.is_authenticated %}
+        <a href="/download{{material.file.url}}" download>Download</a>
+    {% else %}
+    <h1>Please, register or log in to web-site to download material</h1>
+    {% endif %}
 {% endblock %}
