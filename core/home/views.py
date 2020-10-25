@@ -12,7 +12,7 @@ def home_view(request):
     query = ""
     if request.POST:
         print(request.POST)
-        query = request.POST['search_field']
+        query = request.POST.get('search_field', "")
         context['query'] = str(query)
 
     if query == "":
