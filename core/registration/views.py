@@ -34,6 +34,7 @@ def signup_view(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         print("User:", username, ", email:", email, ", password:", password)
-
-        return home_view(request)
+        # confirmation page redirect
+        # return home_view(request)
+        return render(request, 'registration/signup_successful.html')
     return render(request, 'registration/signup.html', {'form': form})
