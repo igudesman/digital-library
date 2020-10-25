@@ -12,6 +12,9 @@ import os
 
 
 class MyTestCase(TestCase):
+    """
+    Unit testing of code
+    """
     def setUp(self):
         with open('abc.txt', "wb+") as file1, open('qwerty.txt', 'wb+') as file2:
             file1.write('wfwfwe'.encode())
@@ -65,4 +68,3 @@ class MyTestCase(TestCase):
         self.assertEqual(material1.author, "Shilov")
         self.assertEqual(material2.title, "PS lecture notes")
 
-        # self.assertEqual('1', '2')

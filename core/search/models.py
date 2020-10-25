@@ -2,8 +2,11 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
-
+# Our main tables, databases
 class Tag(models.Model):
+    """
+    Table for storing tags (with courses labels or simple genres). One material - many or none tags
+    """
     tag = models.CharField(max_length=50, null=False)
 
     def __str__(self):
@@ -11,6 +14,10 @@ class Tag(models.Model):
 
 
 class Material(models.Model):
+    """
+    Table for storing materials.
+    TODO(we dont need time_publication - django timezone already stores time and date)
+    """
     who_added_username = models.CharField(max_length=50, default='admin', null=False)
     date_publication = models.DateField(null=False, help_text="Date of publication")
     time_publication = models.TimeField(null=False, help_text="Time of publication")
@@ -33,9 +40,13 @@ class Material(models.Model):
     def __str__(self):
         return self.title
 
+    # For showing url of book, idk how it works
     def get_absolute_url(self):
         return reverse('material-detail', args=[str(self.id)])
 
 
 class Reference(models.Model):
+    """
+    With creation of material we create request to the material
+    """
     reference = models.OneToOneField(Material, on_delete=models.CASCADE)

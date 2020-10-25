@@ -7,12 +7,15 @@ from search.views import get_material_queryset
 from operator import attrgetter
 
 def home_view(request):
+    """
+    Generates home view. If search request is empty, shows all material that in the site (visibility='1')
+    """
     context = {}
 
     query = ""
     if request.POST:
         print(request.POST)
-        query = request.POST['search_field']
+        query = request.POST.get('search_field', "")
         context['query'] = str(query)
 
     if query == "":

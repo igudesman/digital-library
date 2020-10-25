@@ -15,6 +15,9 @@ from operator import attrgetter
 from home.views import home_view
 
 def signup_view(request):
+    """
+    This view generates view for sign up form.
+    """
     form = SignUpForm(request.POST)
     if form.is_valid():
         username = form.cleaned_data.get('username')
@@ -31,6 +34,7 @@ def signup_view(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         print("User:", username, ", email:", email, ", password:", password)
-
-        return home_view(request)
+        # confirmation page redirect
+        # return home_view(request)
+        return render(request, 'registration/signup_successful.html')
     return render(request, 'registration/signup.html', {'form': form})
