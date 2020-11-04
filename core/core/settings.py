@@ -54,7 +54,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'registration.apps.RegistrationConfig',
     'search.apps.SearchConfig',
+    "django_tables2",
 ]
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +74,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 os.path.join(BASE_DIR, 'search/templates/search'),],
+                 os.path.join(BASE_DIR, 'search/templates/search'),
+                 os.path.join(BASE_DIR, 'moderator/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

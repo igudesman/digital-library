@@ -22,7 +22,7 @@ from home.views import home_view
 from registration.views import signup_view
 from django.views.generic import RedirectView
 from django.contrib.auth import views as auth_views
-
+from moderator.views import moder_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,6 +35,7 @@ urlpatterns = [
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('', include('search.urls')),
+    path('moder/', moder_view, name="moder"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
