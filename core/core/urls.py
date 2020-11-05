@@ -26,7 +26,7 @@ from moderator.views import moder_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('home.urls')),
+    path('home/', home_view, name='home'),
     path('upload/', views.upload, name='upload'),
     path('signup/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -34,7 +34,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/home/', permanent=True)),
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('', include('search.urls')),
+    path('material/', include('search.urls')),
     path('moder/', moder_view, name="moder"),
 ]
 

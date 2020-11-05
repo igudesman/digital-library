@@ -27,7 +27,7 @@
                                 <p><strong>Tags:</strong> {% for tag in material.tags.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                             </div>
 
-                            <form method="POST" action= {% url "material" material.id %}> 
+                            <form method="POST" action= {% url "material" material.id %}>
                                 {% csrf_token %}
                                 <input type="submit" class="btn" value="View">
                             </form>

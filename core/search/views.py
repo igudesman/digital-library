@@ -4,11 +4,13 @@ from .models import Material
 from django.db.models import Q
 import os
 
-
 # Create your views here.
 # TODO( сделать нормальну закрузку материалов, а не то, что у нас)
 
 # Word by word finding matches
+from moderator.views import moder_view
+
+
 def get_material_queryset(query=None):
     """
     Retrieve all materials bu the query in search bar
@@ -34,7 +36,7 @@ def get_material_queryset(query=None):
 
 
 def file_download(request, file_path):
-    print(file_path)
+    file_path = file_path[1:]
     try:
         response = FileResponse(open(file_path, 'rb'))
         response['content_type'] = "application/octet-stream"
@@ -51,3 +53,20 @@ def material_page(request, material_id):
     return render(request, 'search/material_detail.html', context)
 
 
+def change_view(request, material_id):
+    if not request.user.groups.filter(name='admin').exists():
+        return render(request, "not_a_moder.html")
+
+    material = Material.objects.get(pk=material_id)
+    material.visibility = "0" if material.visibility == "1" else "1"
+    material.save()
+    return moder_view(request)
+
+
+def delete_view(request, material_id):
+    if not request.user.groups.filter(name='admin').exists():
+        return render(request, "not_a_moder.html")
+
+    material = Material.objects.get(pk=material_id)
+    material.delete()
+    return moder_view(request)
