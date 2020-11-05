@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
-{% load render_table from django_tables2 %}
 
 {% block content %}
-    {% render_table table %}
+    <div class="row">
+        {% for material in materials %}
+            <div class="col-lg-4 col-md-6">
+                <div class="listing__item">
+                    <h1>Title: {{ material.title }}</h1>
+                    <p><strong>Author:</strong> {{ material.author }}</p>
+                    <p><strong>Date of publication:</strong> {{ material.date_publication }}<p>
+                    <p><strong>Time of publication:</strong> {{ material.time_publication }}<p>
+                    <p><strong>Tags:</strong> {% for tag in material.tags.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                </div>
+
+                <form method="POST" action= {% url "material" material.id %}> 
+                    {% csrf_token %}
+                    <input type="submit" class="btn" value="View">
+                </form>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

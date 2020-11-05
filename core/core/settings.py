@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'registration.apps.RegistrationConfig',
     'search.apps.SearchConfig',
-    "django_tables2",
 ]
 DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
