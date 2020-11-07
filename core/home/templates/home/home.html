@@ -1,117 +1,40 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en-us">
+{% block content %}
+    <div class="searchBar">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Digital Library</title>
+        <form method="post" id="search_form">
+            {% csrf_token %}
+            <input type="search" name="search_field" placeholder="type name/author/course and proper material will be shown" />
+            <input type="submit" class="btn" value="search" />
 
-    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'home/css/style.css' %}" type="text/css">
-</head>
+        </form>
 
-<body>
+    </div>
+
     <section class="most-search spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Library Content</h2>
-                    </div>
+        <div class="content">
+
+            <h1>Inno library</h1>
+                <div class="row">
+                    {% for material in material_list %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="listing__item">
+                                <h1>Title: {{ material.title }}</h1>
+                                <p><strong>Author:</strong> {{ material.author }}</p>
+                                <p><strong>Date of publication:</strong> {{ material.date_publication }}<p>
+                                <p><strong>Time of publication:</strong> {{ material.time_publication }}<p>
+                                <p><strong>Tags:</strong> {% for tag in material.tags.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                            </div>
+
+                            <form method="POST" action= {% url "material" material.id %}> 
+                                {% csrf_token %}
+                                <input type="submit" class="btn" value="View">
+                            </form>
+                        </div>
+
+                    {% endfor %}
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="most__search__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    Lectures
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    Assignments
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    Books
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    Tutorials
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                            <div class="row">
-                                {% for material in Lecture %}
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="listing__item">
-                                            <h6>Title: {{ material.title }}</h6>
-                                            <h6>Author: {{ material.author }}</h6>
-                                            <h6>Type: {{ material.material_type }}</h6>
-                                            <h6>Status: {{ material.status }}</h6>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class="row">
-                                {% for material in Assignment %}
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="listing__item">
-                                            <h6>Title: {{ material.title }}</h6>
-                                            <h6>Author: {{ material.author }}</h6>
-                                            <h6>Type: {{ material.material_type }}</h6>
-                                            <h6>Status: {{ material.status }}</h6>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">
-                            <div class="row">
-                                {% for material in Book %}
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="listing__item">
-                                            <h6>Title: {{ material.title }}</h6>
-                                            <h6>Author: {{ material.author }}</h6>
-                                            <h6>Type: {{ material.material_type }}</h6>
-                                            <h6>Status: {{ material.status }}</h6>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-4" role="tabpanel">
-                            <div class="row">
-                                {% for material in Lecture %}
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="listing__item">
-                                            <h6>Title: {{ material.title }}</h6>
-                                            <h6>Author: {{ material.author }}</h6>
-                                            <h6>Type: {{ material.material_type }}</h6>
-                                            <h6>Status: {{ material.status }}</h6>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
-
-    <script src="{% static 'home/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

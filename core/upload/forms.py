@@ -1,23 +1,17 @@
 from django import forms
-from .models import UploadedFile
+from search.models import Material, Tag
 
+class UploadedFileForm(forms.Form):
+    """
+    Actual form for downmloading material
+    TODO(add checks like can not download file with the same name)
+    """
+    title = forms.CharField(max_length=50, help_text="title")
+    author = forms.CharField(max_length=50, help_text="Author")
 
-class UploadedFileForm(forms.ModelForm):
+    tags = forms.ModelMultipleChoiceField(
+        queryset=Tag.objects.all()
+    )
 
-    class Meta:
-        model = UploadedFile
-        fields = ('title', 'author', 'material_type', 'file')
+    file = forms.FileField(help_text="Upload material")
 
-    def validate_file_type(self, extension, file_type):
-
-        BOOK_TYPES = ['pdf', 'txt', 'epub']
-        LECTURE_TYPES = ['pdf']
-        ASSIGNMENT_TYPES = ['pdf']
-
-        if (file_type == 'Book') and (extension in BOOK_TYPES):
-            return True
-        elif (file_type == 'Lecture') and (extension in LECTURE_TYPES):
-            return True
-        elif (file_type == 'Assignment') and (extension in ASSIGNMENT_TYPES):
-            return True
-        return False
