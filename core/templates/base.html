@@ -4,16 +4,32 @@
 
 
     {% block title %}<title>Local Library</title>{% endblock %}
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
 
     {% load static %}
+
+    <link rel="stylesheet" href="{% static 'material/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'material/css/style.css' %}" type="text/css">
+    
     <link rel="stylesheet" href="{% static 'home/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'navbar/css/reset.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'navbar/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'navbar/css/header-7.css' %}" />
+    
+
     <script src="{% static 'home/js/extention/choices.js' %}" type="text/javascript"></script>  
+
 
 </head>
 
