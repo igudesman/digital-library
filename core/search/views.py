@@ -27,7 +27,7 @@ def get_material_queryset(query=None):
              Q(author__icontains=q) |
              Q(tags__tag=q)) &
             Q(visibility__icontains='1')
-        ).distinct()
+        )
 
         for material in materials:
             queryset.append(material)
@@ -48,9 +48,8 @@ def file_download(request, file_path):
 
 def material_page(request, material_id):
     context = {}
-    material = Material.objects.filter(pk=material_id)
-    context['material'] = material[0]
-    return render(request, 'search/material_detail.html', context)
+    material = Material.objects.get(pk=material_id)
+    return render(request, 'search/material_detail.html', {'material': material})
 
 
 def change_view(request, material_id):
