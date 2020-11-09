@@ -1,12 +1,13 @@
 {% load static %}
 {% block block_entry %}
     <article class="brick entry format-standard animate-this">
-
+        <div class="entry__thumb">
         <a href="/material/{{material.id}}" class="thumb-link">
                 <img src="{% static 'home/img/maxim.jpg' %}"
                      srcset="{% static 'home/img/maxim.jpg' %} 1x, {% static 'home/img/maxim.jpg' %} 2x"
                      alt="">
             </a>
+        </div>
 
         <div class="entry__text">
             <div class="entry__header">
