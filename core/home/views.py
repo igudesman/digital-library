@@ -16,7 +16,7 @@ def home_view(request):
     query, category = "", "All categories"
     if request.POST:
         query = request.POST.get('search_field', "")
-        category = request.POST['choices-single-defaul']
+        category = request.POST.get('choices-single-defaul', 'All categories')
 
     context['material_list'] = get_material_queryset(query, category)
 

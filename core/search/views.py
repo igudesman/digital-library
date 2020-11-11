@@ -9,7 +9,7 @@ from .models import Material
 
 
 # Create your views here.
-# TODO( сделать нормальну закрузку материалов, а не то, что у нас)
+
 def is_moder(user):
     return user.groups.filter(name='admin').exists()
 

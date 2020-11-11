@@ -1,61 +1,50 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
+    <section class="s-content s-styles">
 
-<div class="row">
+        <div class="row">
 
-    <div class="column large-6 tab-12">
+            <div class="column large-6 tab-12">
 
-        <form method="post">
-          {% csrf_token %}
-            <div>
-                <label>Title</label>
-                <input class="h-full-width" name="title" required="required" placeholder="Differential Equations Lab 6" id="id_title">
-            </div>
-            <div>
-                <label>Author</label>
-                <input class="h-full-width" required="required" placeholder="Nickolay Shilov" name="author" id="id_author">
-            </div>
+                <h3 class="h-add-bottom">Upload material</h3>
 
-            <div>
-              <label for="sampleRecipientInput">Tags</label>
-                <div class="ss-custom-select">
-                  <select class="form-control" name="tags" required="required" id="id_tags" multiple>
-                    {% for tag in tags %}
-                      <option value="1">{{ tag }}</option>
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div>
+                        {{ field.error }}
+                        {{  field.label_tag }} {{ field }}
+                        {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                        </div>
                     {% endfor %}
-                  </select>
-                </div>
+                    <input class="btn--primary h-full-width" type="submit" value="Upload">
+                </form>
+
             </div>
 
-            <div class="form-group mt-3">
-              <label class="mr-2">Upload your Material:</label>
-              <input type="file" required="required" name="file" id="id_file">
+            <div class="column large-6 tab-12">
+
+                {% for alert in alerts %}
+                    {% if alert == "success" %}
+                        <div class="alert-box alert-box--success">
+                            <p>The material was successfully uploaded!</p>
+                            <span class="alert-box__close"></span>
+                        </div><!-- end error -->
+                    {% else %}
+                        <div class="alert-box alert-box--error">
+                            <p>{{ alert }}</p>
+                            <span class="alert-box__close"></span>
+                        </div><!-- end success -->
+                    {% endif %}
+                {% endfor %}
+
             </div>
 
-            <input class="btn--primary h-full-width" type="submit" value="Upload">
-        </form>
+        </div>
+    </section>
 
-    </div>
-
-    <div class="column large-6 tab-12">
-
-      {% for alert in alerts %}
-          {% if alert == "error" %}
-            <div class="alert-box alert-box--error">
-                <p>Error Message. Your Message Goes Here.</p>
-                <span class="alert-box__close"></span>
-            </div><!-- end error -->
-          {% else %}
-            <div class="alert-box alert-box--success">
-                <p>Success Message. Your Message Goes Here.</p>
-                <span class="alert-box__close"></span>
-            </div><!-- end success -->
-          {% endif %}
-      {% endfor %}
-
-    </div>
-
-</div>
 
 {% endblock %}

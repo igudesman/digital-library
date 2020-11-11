@@ -7,7 +7,7 @@ from home.views import home_view
 from search.models import Material, Reference
 from .forms import UploadedFileForm
 from search.models import Tag
-
+from django.utils import timezone
 
 @login_required(redirect_field_name='login')
 def upload(request):
@@ -15,15 +15,15 @@ def upload(request):
     This method generates webpage-form to upload material
     """
     alerts = []
-    test = ''
     if request.method == 'POST':
         form = UploadedFileForm(request.POST, request.FILES)
 
         if form.is_valid():
+
             material = Material.objects.create(
                 who_added_username=request.user.email,
-                date_publication=datetime.datetime.now(),
-                time_publication=datetime.datetime.now(),
+                date_publication=timezone.now(),
+                time_publication=timezone.now(),
                 title=form.cleaned_data.get('title'),
                 author=form.cleaned_data.get('author'),
                 file=form.cleaned_data.get('file'),
@@ -32,26 +32,22 @@ def upload(request):
             )
 
             material.tags.set(form.cleaned_data.get('tags'))
+            form = UploadedFileForm()
 
             material.save()
 
             reference = Reference.objects.create(reference=material)
             reference.save()
+            alerts.insert(0, 'success')
 
             print("Material:", request.FILES['file'], "was uploaded!")
-            alerts.append('success')
 
-            return home_view(request)
-
+            return render(request, 'upload/upload.html', context={'form': form, 'alerts': alerts})
         else:
-            print("ERROR!")
-            alerts.append('error')
+            alerts.insert(0, form.errors)
+            print(form.errors)
 
     else:
         form = UploadedFileForm()
-        for i, el in enumerate(form):
-            if i == 2:
-                test = el
-                break
 
-    return render(request, 'upload/upload.html', context={'form': test, 'tags': Tag.objects.all(), 'alerts': alerts})
+    return render(request, 'upload/upload.html', context={'form': form, 'alerts': alerts})
