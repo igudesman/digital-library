@@ -9,22 +9,21 @@
         <form method="post">
           {% csrf_token %}
             <div>
-                <label for="sampleInput">Title</label>
+                <label>Title</label>
                 <input class="h-full-width" name="title" required="required" placeholder="Differential Equations Lab 6" id="id_title">
             </div>
             <div>
-                <label for="sampleRecipientInput">Author</label>
+                <label>Author</label>
                 <input class="h-full-width" required="required" placeholder="Nickolay Shilov" name="author" id="id_author">
             </div>
 
             <div>
               <label for="sampleRecipientInput">Tags</label>
                 <div class="ss-custom-select">
-                  <select class="form-control" name="tags" id="id_tags">
-                      <option value="0">BS20</option>
-                      <option value="1">BS19</option>
-                      <option value="2">BS18</option>
-                      <option value="3">Lecture</option>
+                  <select class="form-control" name="tags" required="required" id="id_tags" multiple>
+                    {% for tag in tags %}
+                      <option value="1">{{ tag }}</option>
+                    {% endfor %}
                   </select>
                 </div>
             </div>

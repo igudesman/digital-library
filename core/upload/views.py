@@ -6,6 +6,7 @@ from django.shortcuts import render
 from home.views import home_view
 from search.models import Material, Reference
 from .forms import UploadedFileForm
+from search.models import Tag
 
 
 @login_required(redirect_field_name='login')
@@ -14,8 +15,8 @@ def upload(request):
     This method generates webpage-form to upload material
     """
     alerts = []
+    test = ''
     if request.method == 'POST':
-
         form = UploadedFileForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -48,5 +49,9 @@ def upload(request):
 
     else:
         form = UploadedFileForm()
+        for i, el in enumerate(form):
+            if i == 2:
+                test = el
+                break
 
-    return render(request, 'upload/upload.html', context={'form': form})
+    return render(request, 'upload/upload.html', context={'form': test, 'tags': Tag.objects.all(), 'alerts': alerts})
