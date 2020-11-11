@@ -1,7 +1,7 @@
 from django.urls import path, re_path
+
 from .views import file_download
 from .views import material_page, change_view, delete_view
-
 
 urlpatterns = [
     path('<int:material_id>/', material_page, name='material'),

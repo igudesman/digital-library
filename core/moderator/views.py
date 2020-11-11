@@ -1,11 +1,12 @@
+import django_tables2 as tables
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django_tables2 import RequestConfig
+
+from search.models import Material
+
 
 # Create your views here.
-
-from django.contrib.auth.decorators import login_required
-import django_tables2 as tables
-from search.models import Material
-from django_tables2 import RequestConfig
 
 
 class MaterialTable(tables.Table):

@@ -1,33 +1,33 @@
 {% load static %}
 {% block navbar %}
 
-<header class="site-header">
-  <div class="wrapper site-header__wrapper">
-    <div class="site-header__start">
-      <a href="{% url 'home' %}" class="brand">Digital Library</a>
-    </div>
-    <div class="site-header__middle">
-      <nav class="nav">
-        <ul class="nav__wrapper">
-                <li class="nav__item"><a href="{% url 'home' %}">Home</a></li>
-                <li class="nav__item"><a href="/admin/">Admin panel</a></li>
-                <li class="nav__item"><a href="/moder/">Moder page</a></li>
-            {% if user.is_authenticated %}
-                <li class="nav__item"><a href="{% url 'upload'%}">Upload material</a></li>
-            {% endif %}
-        </ul>
-      </nav>
-    </div>
-    <div class="site-header__end">
-      {% if user.is_authenticated %}
-        <a href="{% url 'logout'%}">Logout</a>
-      {% else %}
-      <ul class="nav__wrapper">
-        <li class="nav__item"><a href="{% url 'signup' %}">Sign Up</a></li>
-        <li class="nav__item"><a href="{% url 'login' %}">Sign In</a></li>
-      </ul>
-      {% endif %}
-    </div>
-  </div>
-</header>
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <div class="site-header__start">
+                <a href="{% url 'home' %}" class="brand">Digital Library</a>
+            </div>
+            <div class="site-header__middle">
+                <nav class="nav">
+                    <ul class="nav__wrapper">
+                        <li class="nav__item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="nav__item"><a href="/admin/">Admin panel</a></li>
+                        <li class= "nav__item" ><a href="{% url 'moder' %}">Moder page</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav__item"><a href="{% url 'upload' %}">Upload material</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="site-header__end">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <ul class="nav__wrapper">
+                        <li class="nav__item"><a href="{% url 'signup' %}">Sign Up</a></li>
+                        <li class="nav__item"><a href="{% url 'login' %}">Sign In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </header>
 {% endblock %}

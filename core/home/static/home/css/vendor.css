@@ -12,7 +12,6 @@
  * =================================================================== */
 
 
-
 /* ===================================================================
  * # PrismJS 1.20.0
  *   https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+markup-templating+php 
@@ -50,13 +49,13 @@ pre[class*="language-"] {
     overflow: auto;
 }
 
-:not(pre)>code[class*="language-"], pre[class*="language-"] {
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
     background: #272822;
 }
 
 /* Inline code */
 
-:not(pre)>code[class*="language-"] {
+:not(pre) > code[class*="language-"] {
     padding: .1em;
     white-space: normal;
 }
@@ -112,7 +111,6 @@ pre[class*="language-"] {
 .token.entity {
     cursor: help;
 }
-
 
 
 /* ===================================================================
@@ -347,7 +345,6 @@ pre[class*="language-"] {
 .lity-hide {
     display: none;
 }
-
 
 
 /* ===================================================================

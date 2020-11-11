@@ -1,11 +1,18 @@
-from django.http import StreamingHttpResponse, Http404, HttpResponse, FileResponse
-from django.shortcuts import render
-from .models import Material
-from django.db.models import Q
 import os
+
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Q
+from django.http import Http404, FileResponse
+from django.shortcuts import render
+
+from .models import Material
+
 
 # Create your views here.
 # TODO( сделать нормальну закрузку материалов, а не то, что у нас)
+def is_moder(user):
+    return user.groups.filter(name='admin').exists()
+
 
 # Word by word finding matches
 from moderator.views import moder_view
@@ -35,6 +42,7 @@ def get_material_queryset(query=None):
     return list(set(queryset))
 
 
+@login_required(redirect_field_name='login')
 def file_download(request, file_path):
     file_path = file_path[1:]
     try:
@@ -46,12 +54,15 @@ def file_download(request, file_path):
         raise Http404
 
 
+@login_required(redirect_field_name='login')
 def material_page(request, material_id):
     context = {}
     material = Material.objects.get(pk=material_id)
     return render(request, 'search/material_detail.html', {'material': material})
 
 
+@login_required(redirect_field_name='login')
+@user_passes_test(is_moder)
 def change_view(request, material_id):
     if not request.user.groups.filter(name='admin').exists():
         return render(request, "not_a_moder.html")
@@ -62,6 +73,8 @@ def change_view(request, material_id):
     return moder_view(request)
 
 
+@login_required(redirect_field_name='login')
+@user_passes_test(is_moder)
 def delete_view(request, material_id):
     if not request.user.groups.filter(name='admin').exists():
         return render(request, "not_a_moder.html")
@@ -69,3 +82,7 @@ def delete_view(request, material_id):
     material = Material.objects.get(pk=material_id)
     material.delete()
     return moder_view(request)
+
+
+def is_moder(user):
+    return user.groups.filter(name='admin').exists()

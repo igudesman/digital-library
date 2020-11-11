@@ -1,11 +1,11 @@
-from django.shortcuts import render
-from .forms import UploadedFileForm
-from search.models import Material, Reference
 import datetime
 
-from home.views import home_view
-
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+from home.views import home_view
+from search.models import Material, Reference
+from .forms import UploadedFileForm
 
 
 @login_required
@@ -14,10 +14,8 @@ def upload(request):
     This method generates webpage-form to upload material
     """
     if request.method == 'POST':
-        print("POST")
-        form = UploadedFileForm(request.POST, request.FILES)
 
-        print("Errors: ", form.errors)
+        form = UploadedFileForm(request.POST, request.FILES)
 
         if form.is_valid():
             material = Material.objects.create(
@@ -37,8 +35,6 @@ def upload(request):
 
             reference = Reference.objects.create(reference=material)
             reference.save()
-
-            print("Material:", request.FILES['file'], "was uploaded!")
 
             return home_view(request)
 

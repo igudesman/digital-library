@@ -1,10 +1,11 @@
+from operator import attrgetter
 
 from django.shortcuts import render
-from django.http import HttpResponse, StreamingHttpResponse, Http404
 from django.views import generic
+
 from search.models import Material, Tag
 from search.views import get_material_queryset
-from operator import attrgetter
+
 
 def home_view(request):
     """
@@ -20,7 +21,8 @@ def home_view(request):
 
     if query == "":
         print("Empty request")
-        material_list = sorted(Material.objects.filter(visibility__icontains='1').all(), key=attrgetter('date_publication'), reverse=True)
+        material_list = sorted(Material.objects.filter(visibility__icontains='1').all(),
+                               key=attrgetter('date_publication'), reverse=True)
         tags = Tag
     else:
         material_list = sorted(get_material_queryset(query), key=attrgetter('date_publication'), reverse=True)

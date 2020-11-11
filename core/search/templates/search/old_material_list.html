@@ -4,31 +4,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="search-bar mt-sm-2 mr-2">
-    <form method="get">
-        <input type="text" class='form-control' name="q" id='id_q' placeholder="Search...">
+    <div class="search-bar mt-sm-2 mr-2">
+        <form method="get">
+            <input type="text" class='form-control' name="q" id='id_q' placeholder="Search...">
 
-    </form>
+        </form>
 
-</div>
-<script type="text/javascript">
-    document.getElementById("id_q").value = "{{query}}"
-</script>
+    </div>
+    <script type="text/javascript">
+    document.getElementById("id_q").value = "{{ query }}"
+
+    </script>
 
     <h1>material List</h1>
 
     {% if material_list %}
-    <ul>
+        <ul>
 
-      {% for material in material_list %}
-      <li>
-        <a href="{{ material.get_absolute_url }}">{{ material.title }}</a>,
-          {{material.author}}, {{material.date_publication}}, {{material.time_publication}}, {% for tag in material.tags.all %} {{ tag }}, {% endfor %} {{material.who_added_username}}
-      </li>
-      {% endfor %}
+            {% for material in material_list %}
+                <li>
+                    <a href="{{ material.get_absolute_url }}">{{ material.title }}</a>,
+                    {{ material.author }}, {{ material.date_publication }}, {{ material.time_publication }},
+                    {% for tag in material.tags.all %} {{ tag }}, {% endfor %} {{ material.who_added_username }}
+                </li>
+            {% endfor %}
 
-    </ul>
+        </ul>
     {% else %}
-      <p>There are no materials in the library.</p>
+        <p>There are no materials in the library.</p>
     {% endif %}
 {% endblock %}

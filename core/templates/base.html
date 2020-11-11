@@ -38,22 +38,22 @@
 
 <body id="top">
 
-    <!-- preloader================================================== -->
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
+<!-- preloader================================================== -->
+<div id="preloader">
+    <div id="loader"></div>
+</div>
 
-    {% include 'navbar.html' %}
+{% include 'navbar.html' %}
 
-    {% include 'search_bar.html' %}
+{% include 'search_bar.html' %}
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-    <!-- Java Script
-    ================================================== -->
-    <script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'home/js/plugins.js' %}"></script>
-    <script src="{% static 'home/js/main.js' %}"></script>
+<!-- Java Script
+================================================== -->
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'home/js/plugins.js' %}"></script>
+<script src="{% static 'home/js/main.js' %}"></script>
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 from django import forms
-from search.models import Material, Tag
+
+from search.models import Tag
+
 
 class UploadedFileForm(forms.Form):
     """
@@ -14,4 +16,3 @@ class UploadedFileForm(forms.Form):
     )
 
     file = forms.FileField(help_text="Upload material")
-
