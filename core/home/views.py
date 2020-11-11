@@ -13,20 +13,13 @@ def home_view(request):
     """
     context = {}
 
-    query = ""
+    query, category = "", "All categories"
     if request.POST:
-        print(request.POST)
         query = request.POST.get('search_field', "")
-        context['query'] = str(query)
+        category = request.POST['choices-single-defaul']
 
-    if query == "":
-        print("Empty request")
-        material_list = sorted(Material.objects.filter(visibility__icontains='1').all(),
-                               key=attrgetter('date_publication'), reverse=True)
-        tags = Tag
-    else:
-        material_list = sorted(get_material_queryset(query), key=attrgetter('date_publication'), reverse=True)
-    context['material_list'] = material_list
+    context['material_list'] = get_material_queryset(query, category)
+
     return render(request, 'new_home.html', context)
 
 

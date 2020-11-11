@@ -8,7 +8,7 @@ from search.models import Material, Reference
 from .forms import UploadedFileForm
 
 
-@login_required
+@login_required(redirect_field_name='login')
 def upload(request):
     """
     This method generates webpage-form to upload material
@@ -19,7 +19,7 @@ def upload(request):
 
         if form.is_valid():
             material = Material.objects.create(
-                who_added_username='Will add later',
+                who_added_username=request.user.email,
                 date_publication=datetime.datetime.now(),
                 time_publication=datetime.datetime.now(),
                 title=form.cleaned_data.get('title'),
