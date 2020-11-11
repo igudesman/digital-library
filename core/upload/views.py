@@ -13,6 +13,7 @@ def upload(request):
     """
     This method generates webpage-form to upload material
     """
+    alerts = []
     if request.method == 'POST':
 
         form = UploadedFileForm(request.POST, request.FILES)
@@ -36,7 +37,14 @@ def upload(request):
             reference = Reference.objects.create(reference=material)
             reference.save()
 
+            print("Material:", request.FILES['file'], "was uploaded!")
+            alerts.append('success')
+
             return home_view(request)
+
+        else:
+            print("ERROR!")
+            alerts.append('error')
 
     else:
         form = UploadedFileForm()
