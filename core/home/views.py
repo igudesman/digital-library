@@ -1,9 +1,7 @@
-from operator import attrgetter
-
 from django.shortcuts import render
 from django.views import generic
 
-from search.models import Material, Tag
+from search.models import Material
 from search.views import get_material_queryset
 
 

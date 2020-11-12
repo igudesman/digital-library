@@ -10,8 +10,8 @@
                 <nav class="nav">
                     <ul class="nav__wrapper">
                         <li class="nav__item"><a href="{% url 'home' %}">Home</a></li>
-                        <li class="nav__item"><a href="/admin/">Admin panel</a></li>
-                        <li class= "nav__item" ><a href="{% url 'moder' %}">Moder page</a></li>
+                        <li class="nav__item"><a href="{% url 'admin:index' %}">Admin panel</a></li>
+                        <li class="nav__item"><a href="{% url 'moder' %}">Moder page</a></li>
                         {% if user.is_authenticated %}
                             <li class="nav__item"><a href="{% url 'upload' %}">Upload material</a></li>
                         {% endif %}

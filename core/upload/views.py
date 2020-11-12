@@ -1,13 +1,10 @@
-import datetime
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.utils import timezone
 
-from home.views import home_view
 from search.models import Material, Reference
 from .forms import UploadedFileForm
-from search.models import Tag
-from django.utils import timezone
+
 
 @login_required(redirect_field_name='login')
 def upload(request):

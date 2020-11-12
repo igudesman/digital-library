@@ -13,11 +13,11 @@
                     {% csrf_token %}
                     {% for field in form %}
                         <div>
-                        {{ field.error }}
-                        {{  field.label_tag }} {{ field }}
-                        {% if field.help_text %}
-                            <p class="help">{{ field.help_text|safe }}</p>
-                        {% endif %}
+                            {{ field.error }}
+                            {{ field.label_tag }} {{ field }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
                         </div>
                     {% endfor %}
                     <input class="btn--primary h-full-width" type="submit" value="Upload">
