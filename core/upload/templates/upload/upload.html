@@ -1,50 +1,41 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-    <section class="s-content s-styles">
 
-        <div class="row">
-
-            <div class="column large-6 tab-12">
-
-                <h3 class="h-add-bottom">Upload material</h3>
-
-                <form enctype="multipart/form-data" method="post">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div>
-                            {{ field.error }}
-                            {{ field.label_tag }} {{ field }}
-                            {% if field.help_text %}
-                                <p class="help">{{ field.help_text|safe }}</p>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                    <input class="btn--primary h-full-width" type="submit" value="Upload">
-                </form>
-
-            </div>
-
-            <div class="column large-6 tab-12">
-
-                {% for alert in alerts %}
-                    {% if alert == "success" %}
-                        <div class="alert-box alert-box--success">
-                            <p>The material was successfully uploaded!</p>
-                            <span class="alert-box__close"></span>
-                        </div><!-- end error -->
-                    {% else %}
-                        <div class="alert-box alert-box--error">
-                            <p>{{ alert }}</p>
-                            <span class="alert-box__close"></span>
-                        </div><!-- end success -->
-                    {% endif %}
-                {% endfor %}
-
-            </div>
-
+<legend class="border-bottom mb-4">Upload Material</legend>
+<div class="row">
+    <div class="column large-6 tab-12">
+        <div class="content-section">
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">Sign Up</button>
+                </div>
+            </form>
         </div>
-    </section>
+    </div>
+    <div class="column large-6 tab-12">
+
+        {% for alert in alerts %}
+            {% if alert == "success" %}
+                <div class="alert-box alert-box--success">
+                    <p>The material was successfully uploaded!</p>
+                    <span class="alert-box__close"></span>
+                </div><!-- end error -->
+            {% else %}
+                <div class="alert-box alert-box--error">
+                    <p>{{ alert }}</p>
+                    <span class="alert-box__close"></span>
+                </div><!-- end success -->
+            {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
 
 
 {% endblock %}

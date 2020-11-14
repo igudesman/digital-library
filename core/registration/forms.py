@@ -6,8 +6,8 @@ class SignUpForm(forms.Form):
     """
     From for signing up (registrating) with checks username and email
     """
-    username = forms.CharField(max_length=100, help_text='Nickname')
-    email = forms.EmailField(max_length=150, help_text='Email')
+    username = forms.CharField(max_length=100)
+    email = forms.EmailField(max_length=150)
 
     # class Meta:
     #     model = User
