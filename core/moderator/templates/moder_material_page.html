@@ -1,6 +1,68 @@
 {% extends 'base.html' %}
-{% load render_table from django_tables2 %}
+{% load static %}
 
 {% block content %}
-    {% render_table table %}
+    <!-- content
+================================================== -->
+    <section class="s-content s-styles">
+
+
+        <div class="row add-bottom">
+
+            <div class="column large-12">
+
+                <h3>Moderator page</h3>
+
+                <div class="my-table-responsive">
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Date publication</th>
+                            <th>Visibility</th>
+                            <th>Tags</th>
+                            <th>Who added</th>
+                            <th>File name</th>
+                            <th>View book</th>
+                            <th>Change visibility</th>
+                            <th>Delete book</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for material in material_list %}
+                            <tr>
+                                <td>{{ material.title }}</td>
+                                <td>{{ material.author }}</td>
+                                <td>{{ material.date_publication }}</td>
+                                <td>{{ material.visibility }}</td>
+
+                                <td>{% for tag in material.tags.all %} {{ tag }} {% endfor %}</td>
+                                <td>{{ material.who_added }}</td>
+                                <td>{{ material.file_name }}</td>
+                                <td><a href="/material/{{ material.id }}">View book</a></td>
+                                <td><a href="/material/change_visibility/{{ material.id }}">Change visibility</a></td>
+                                <td><a href="/material/delete/{{ material.id }}">Delete book</a></td>
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div> <!-- end row -->
+
+
+    </section> <!-- end s-content -->
+
+
+
+
+
 {% endblock %}

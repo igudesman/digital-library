@@ -25,13 +25,14 @@ def get_material_queryset(query, category):
     """
 
     # Self checking
-    assert category == 'Title' or category == 'All categories' or category == 'Tags'
+    assert category == 'Title' or category == 'All categories' or category == 'Tags' or category=='Author'
     queryset = []
 
     queries = query.split(" ")  # Split query into words
 
     for q in queries:
         materials = None
+        print("category", category)
 
         if category == 'All categories':
             materials = Material.objects.filter(visibility='1').filter(
@@ -49,9 +50,11 @@ def get_material_queryset(query, category):
             materials = Material.objects.filter(visibility='1').filter(
                 Q(tags__tag=q)
             )
-
         else:
-            raise RuntimeError("Check category names!")
+            materials = Material.objects.filter(visibility='1').filter(
+                Q(author__icontains=q)
+            )
+
 
         for material in materials:
             queryset.append(material)
