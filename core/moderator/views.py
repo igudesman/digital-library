@@ -24,7 +24,7 @@ class MaterialTable(tables.Table):
         template_name = 'django_tables2/bootstrap4.html'
 
 
-@login_required()
+@login_required(redirect_field_name='login')
 def moder_view(request):
     if not request.user.groups.filter(name='admin').exists():
         return render(request, "not_a_moder.html")
