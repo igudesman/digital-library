@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('upload', '0007_book_material_type'),
     ]
@@ -17,7 +16,9 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(choices=[(0, 'Uploaded'), (1, 'Processed')], default=0, max_length=20)),
                 ('title', models.CharField(max_length=100)),
                 ('author', models.CharField(max_length=100)),
-                ('material_type', models.CharField(choices=[('Book', 'Book'), ('Lecture', 'Lecture'), ('Assignment', 'Assignment')], default='None', max_length=20)),
+                ('material_type',
+                 models.CharField(choices=[('Book', 'Book'), ('Lecture', 'Lecture'), ('Assignment', 'Assignment')],
+                                  default='None', max_length=20)),
                 ('file', models.FileField(upload_to='')),
             ],
         ),
