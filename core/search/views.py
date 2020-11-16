@@ -1,4 +1,5 @@
 import os
+from operator import attrgetter
 
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
@@ -55,7 +56,9 @@ def get_material_queryset(query, category):
         for material in materials:
             queryset.append(material)
 
-    return list(set(queryset))
+    queryset = sorted(list(set(queryset)), key=attrgetter('time_publication'), reverse=True)
+
+    return queryset
 
 
 @login_required(redirect_field_name='login')
