@@ -25,7 +25,7 @@ def get_material_queryset(query, category):
     """
 
     # Self checking
-    assert category == 'Title' or category == 'All categories' or category == 'Tags' or category=='Author'
+    assert category == 'Title' or category == 'All categories' or category == 'Tags' or category == 'Author'
     queryset = []
 
     queries = query.split(" ")  # Split query into words
@@ -55,7 +55,6 @@ def get_material_queryset(query, category):
                 Q(author__icontains=q)
             )
 
-
         for material in materials:
             queryset.append(material)
 
@@ -78,9 +77,13 @@ def file_download(request, file_path):
 
 @login_required(redirect_field_name='login')
 def material_page(request, material_id):
-    context = {}
     material = Material.objects.get(pk=material_id)
-    return render(request, 'search/material_detail.html', {'material': material})
+    if material.visibility == '0' and is_moder(user=request.user):
+        return render(request, 'info_message.html', {'message':
+                                                         "This material is hidden my moderator, "
+                                                         "to see it, please login as a moderator or super admin!"})
+    else:
+        return render(request, 'search/material_detail.html', {'material': material})
 
 
 @login_required(redirect_field_name='login')
@@ -107,4 +110,4 @@ def delete_view(request, material_id):
 
 
 def is_moder(user):
-    return user.groups.filter(name='admin').exists()
+    return user.groups.filter(name='admin').exists() or user.is_staff

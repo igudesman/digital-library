@@ -1,7 +1,5 @@
-import django_tables2 as tables
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django_tables2 import RequestConfig
 
 from search.models import Material
 
@@ -27,8 +25,9 @@ from search.models import Material
 @login_required(redirect_field_name='login')
 def moder_view(request):
     if not request.user.groups.filter(name='admin').exists():
-        return render(request, "not_a_moder.html")
+        return render(request, "info_message.html",
+                      {'message': "Please register as a moderator to view this page :)", })
     else:
         materials_list = Material.objects.all()
 
-        return render(request, 'moder_material_page.html', context={'material_list': materials_list,})
+        return render(request, 'moder_material_page.html', context={'material_list': materials_list, })
