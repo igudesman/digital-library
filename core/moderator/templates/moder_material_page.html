@@ -39,7 +39,7 @@
                                 <td>{{ material.visibility }}</td>
 
                                 <td>{% for tag in material.tags.all %} {{ tag }} {% endfor %}</td>
-                                <td>{{ material.who_added }}</td>
+                                <td>{{ material.who_added_username }}</td>
                                 <td>{{ material.file_name }}</td>
                                 <td><a href="/material/{{ material.id }}">View book</a></td>
                                 <td><a href="/material/change_visibility/{{ material.id }}">Change visibility</a></td>

@@ -28,6 +28,6 @@ def moder_view(request):
         return render(request, "info_message.html",
                       {'message': "Please register as a moderator to view this page :)", })
     else:
-        materials_list = Material.objects.all()
+        materials_list = Material.objects.all()[:15]  # Show only 15 materials, not more
 
         return render(request, 'moder_material_page.html', context={'material_list': materials_list, })

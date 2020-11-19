@@ -1,8 +1,16 @@
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import generic
 
 from search.models import Material
 from search.views import get_material_queryset
+
+
+@login_required(redirect_field_name='login')
+def my_logout(request):
+    logout(request)
+    return render(request, "info_message.html", {'message': "You have been successfully logout!"})
 
 
 def home_view(request):
