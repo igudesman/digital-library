@@ -1,53 +1,121 @@
-from django.http import StreamingHttpResponse, Http404, HttpResponse, FileResponse
-from django.shortcuts import render
-from .models import Material
-from django.db.models import Q
 import os
+from operator import attrgetter
+
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Q
+from django.http import Http404, FileResponse
+from django.shortcuts import render
+
+from .models import Material
 
 
 # Create your views here.
-# TODO( сделать нормальну закрузку материалов, а не то, что у нас)
+def is_moder(user):
+    return user.groups.filter(name='admin').exists() or user.is_staff
+
 
 # Word by word finding matches
-def get_material_queryset(query=None):
+from moderator.views import moder_view
+
+
+def get_material_queryset(query, category):
     """
-    Retrieve all materials bu the query in search bar
+    Retrieve all materials by the query in search bar
     """
+
+    # Self checking
+    assert category == 'Title' or category == 'All categories' or category == 'Tags' or category == 'Author'
     queryset = []
 
     queries = query.split(" ")  # Split query into words
 
     for q in queries:
-        materials = Material.objects.filter(
-            (Q(title__icontains=q) |
-             Q(author__icontains=q) |
-             Q(file_name__icontains=q) |
-             Q(author__icontains=q) |
-             Q(tags__tag=q)) &
-            Q(visibility__icontains='1')
-        ).distinct()
+        materials = None
+
+        if category == 'All categories':
+            materials = Material.objects.filter(visibility='1').filter(
+                Q(title__icontains=q) |
+                Q(author__icontains=q) |
+                Q(tags__tag=q)
+            )
+
+        elif category == 'Title':
+            materials = Material.objects.filter(visibility='1').filter(
+                Q(title__icontains=q)
+            )
+
+        elif category == 'Tags':
+            materials = Material.objects.filter(visibility='1').filter(
+                Q(tags__tag=q)
+            )
+        else:
+            materials = Material.objects.filter(visibility='1').filter(
+                Q(author__icontains=q)
+            )
 
         for material in materials:
             queryset.append(material)
 
-    return list(set(queryset))
+    queryset = sorted(list(set(queryset)), key=attrgetter('time_publication'), reverse=True)
+
+    return queryset
 
 
+@login_required(redirect_field_name='login')
 def file_download(request, file_path):
-    print(file_path)
+    file_path = file_path[1:]
     try:
         response = FileResponse(open(file_path, 'rb'))
         response['content_type'] = "application/octet-stream"
         response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
         return response
     except Exception:
-        raise Http404
+        raise Http404("Material does not exist")
 
 
+@login_required(redirect_field_name='login')
 def material_page(request, material_id):
-    context = {}
-    material = Material.objects.filter(pk=material_id)
-    context['material'] = material[0]
-    return render(request, 'search/material_detail.html', context)
+    try:
+
+        material = Material.objects.get(pk=material_id)
+        if material.visibility == '0' and is_moder(user=request.user):
+            return render(request, 'info_message.html', {'message':
+                                                             "This material is hidden my moderator, "
+                                                             "to see it, please login as a moderator or super admin!"})
+        else:
+            return render(request, 'search/material_detail.html', {'material': material})
+
+    except Material.DoesNotExist:
+        raise Http404("Material does not exist")
 
 
+@login_required(redirect_field_name='login')
+@user_passes_test(is_moder)
+def change_view(request, material_id):
+    try:
+        if not request.user.groups.filter(name='admin').exists():
+            return render(request, "not_a_moder.html")
+
+        material = Material.objects.get(pk=material_id)
+        material.visibility = "0" if material.visibility == "1" else "1"
+        material.save()
+        return moder_view(request)
+    except Material.DoesNotExist:
+        raise Http404("Material does not exist")
+
+
+@login_required(redirect_field_name='login')
+@user_passes_test(is_moder)
+def delete_view(request, material_id):
+    try:
+
+        if not request.user.groups.filter(name='admin').exists():
+            return render(request, "not_a_moder.html")
+
+        material = Material.objects.get(pk=material_id)
+        material.file.delete()
+        material.delete()
+        return moder_view(request)
+
+    except Material.DoesNotExist:
+        raise Http404("Material does not exist")

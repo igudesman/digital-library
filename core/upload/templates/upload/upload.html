@@ -1,21 +1,41 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
-<h2>Upload form</h2>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {% for field in form %}
-    <p>
-      {{ field.label_tag }}<br>
-      {{ field }}
-      {% if field.help_text %}
-        <small style="color: grey">{{ field.help_text }}</small>
-      {% endif %}
-      {% for error in field.errors %}
-        <p style="color: red">{{ error }}</p>
-      {% endfor %}
-    </p>
-  {% endfor %}
-  <button type="submit">Upload</button>
-</form>
+
+
+    <div class="row" style="position: absolute; top: 10%; left: 20%">
+        <div class="column large-6 tab-12">
+            <div class="content-section">
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="column large-6 tab-12">
+
+            {% for alert in alerts %}
+                {% if alert == "success" %}
+                    <div class="alert-box alert-box--success">
+                        <p>The material was successfully uploaded!</p>
+                        <span class="alert-box__close"></span>
+                    </div><!-- end error -->
+                {% else %}
+                    <div class="alert-box alert-box--error">
+                        <p>{{ alert }}</p>
+                        <span class="alert-box__close"></span>
+                    </div><!-- end success -->
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+
 {% endblock %}

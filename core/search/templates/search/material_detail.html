@@ -1,15 +1,61 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-  <h1>Title: {{ material.title }}</h1>
-  <p><strong>Author:</strong> {{ material.author }}</p>
-  <p><strong>Date of publication:</strong> {{ material.date_publication }}</p>
-  <p><strong>Time of publication:</strong> {{ material.time_publication }}</p>
-  <p><strong>Tags:</strong> {% for tag in material.tags.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <!-- content
+		================================================== -->
+    <section class="s-content s-content--single">
+        <div class="row">
+            <div class="column large-12">
 
-    {% if user.is_authenticated %}
-        <a href="/download{{material.file.url}}" download>Download</a>
-    {% else %}
-    <h1>Please, register or log in to web-site to download material</h1>
-    {% endif %}
+                <article class="s-post entry format-standard">
+
+                    <div class="s-content__media">
+                        <div class="s-content__post-thumb">
+                            <img src="{% static 'material/img/standard-1050.jpg' %}"
+                                 srcset="{% static 'material/img/standard-2100.jpg' %} 2100w,
+                                         {% static 'material/img/standard-1050.jpg' %} 1050w,
+                                         {% static 'material/img/standard-525.jpg' %} 525w"
+                                 sizes="(max-width: 2100px) 100vw, 2100px" alt="">
+                        </div>
+                    </div> <!-- end s-content__media -->
+
+                    <div class="s-content__primary">
+
+                        <h2 class="s-content__title s-content__title--post">{{ material.title }}</h2>
+
+                        <ul class="s-content__post-meta">
+                            <li class="date">Added: {{ material.date_publication }} </li>
+                        </ul>
+
+                        <p class="lead">
+                            Author: {{ material.author }}<br>
+                            Date: {{ material.date_publication }}<br>
+                            Who added: {{ material.who_added_username }}<br>
+                        </p>
+
+                        <p class="s-content__post-tags">
+                            <span>Tagged in :</span>
+                            {% for tag in material.tags.all %}
+                                <a>{{ tag.tag }} </a>
+                            {% endfor %}
+                        </p>
+
+                        {% if user.is_authenticated %}
+                            <div class="upload-button">
+                                <a href="{% url 'file_download' material.file.url %}" download>Download</a>
+                            </div>
+                        {% else %}
+                            <h1>Please, register or log in to web-site to download material</h1>
+                        {% endif %}
+
+
+                    </div> <!-- end s-content__primary -->
+                </article>
+
+            </div> <!-- end column -->
+        </div> <!-- end row -->
+
+    </section> <!-- end s-content -->
+
 {% endblock %}

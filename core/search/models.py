@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 # Create your models here.
 # Our main tables, databases
 class Tag(models.Model):
@@ -21,14 +22,14 @@ class Material(models.Model):
     who_added_username = models.CharField(max_length=50, default='admin', null=False)
     date_publication = models.DateField(null=False, help_text="Date of publication")
     time_publication = models.TimeField(null=False, help_text="Time of publication")
-    title = models.CharField(max_length=50,null=False, help_text="Title of book")
-    author = models.CharField(max_length=50,null=False, help_text="Author")
+    title = models.CharField(max_length=50, null=False, help_text="Title of book")
+    author = models.CharField(max_length=50, null=False, help_text="Author")
 
     tags = models.ManyToManyField(Tag, help_text="Tags of book")
 
     file = models.FileField(null=False, help_text="File with material")
 
-    file_name = models.CharField(max_length=50,null=False,  help_text="Name of file")
+    file_name = models.CharField(max_length=50, null=False, help_text="Name of file")
 
     STATES = [
         ('0', 'Uploaded'),

@@ -1,29 +1,26 @@
-from django.shortcuts import render
-from .forms import UploadedFileForm
-from search.models import Material, Reference
-import datetime
-
-from home.views import home_view
-
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from django.utils import timezone
+
+from search.models import Material, Reference
+from .forms import UploadedFileForm
 
 
-@login_required
+@login_required(redirect_field_name='login')
 def upload(request):
     """
     This method generates webpage-form to upload material
     """
+    alerts = []
     if request.method == 'POST':
-        print("POST")
         form = UploadedFileForm(request.POST, request.FILES)
 
-        print("Errors: ", form.errors)
-
         if form.is_valid():
+
             material = Material.objects.create(
-                who_added_username='Will add later',
-                date_publication=datetime.datetime.now(),
-                time_publication=datetime.datetime.now(),
+                who_added_username=request.user.email,
+                date_publication=timezone.now(),
+                time_publication=timezone.now(),
                 title=form.cleaned_data.get('title'),
                 author=form.cleaned_data.get('author'),
                 file=form.cleaned_data.get('file'),
@@ -32,17 +29,22 @@ def upload(request):
             )
 
             material.tags.set(form.cleaned_data.get('tags'))
+            form = UploadedFileForm()
 
             material.save()
 
             reference = Reference.objects.create(reference=material)
             reference.save()
+            alerts.insert(0, 'success')
 
             print("Material:", request.FILES['file'], "was uploaded!")
 
-            return home_view(request)
+            return render(request, 'upload/upload.html', context={'form': form, 'alerts': alerts})
+        else:
+            alerts.insert(0, form.errors)
+            print(form.errors)
 
     else:
         form = UploadedFileForm()
 
-    return render(request, 'upload/upload.html', context={'form': form})
+    return render(request, 'upload/upload.html', context={'form': form, 'alerts': alerts})

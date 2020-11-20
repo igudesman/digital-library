@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -27,7 +26,8 @@ class Migration(migrations.Migration):
                 ('author', models.CharField(help_text='Author', max_length=50)),
                 ('file', models.FileField(help_text='File with material', upload_to='')),
                 ('file_name', models.CharField(help_text='Name of file', max_length=50)),
-                ('visibility', models.CharField(choices=[('0', 'Uploaded'), ('1', 'Processed')], default='0', help_text='state of book', max_length=1)),
+                ('visibility', models.CharField(choices=[('0', 'Uploaded'), ('1', 'Processed')], default='0',
+                                                help_text='state of book', max_length=1)),
                 ('tags', models.ManyToManyField(help_text='Tags of book', to='search.Tag')),
             ],
         ),

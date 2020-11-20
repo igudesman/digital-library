@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <body id="top">
+
+    {% include 'search_bar.html' %}
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <section class="s-bricks">
+        <div class="masonry">
+            <div class="bricks-wrapper h-group">
+
+                <div class="grid-sizer"></div>
+                {% for material in material_list %}
+                    {% include 'blog_entry.html' %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'home/js/plugins.js' %}"></script>
+    <script src="{% static 'home/js/main.js' %}"></script>
+
+    </body>
+{% endblock %}

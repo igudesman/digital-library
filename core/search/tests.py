@@ -1,20 +1,19 @@
-from django.test import TestCase
-
 # Create your tests here.
 
-from django.test import TestCase
-from .models import Material, Tag, Reference
+import os
 
 from django.core.files import File
+from django.test import TestCase
 from django.utils import timezone
 
-import os
+from .models import Material, Tag
 
 
 class MyTestCase(TestCase):
     """
     Unit testing of code
     """
+
     def setUp(self):
         with open('abc.txt', "wb+") as file1, open('qwerty.txt', 'wb+') as file2:
             file1.write('wfwfwe'.encode())
@@ -64,7 +63,5 @@ class MyTestCase(TestCase):
         os.remove('media/abc.txt')
         os.remove('media/qwerty.txt')
 
-
         self.assertEqual(material1.author, "Shilov")
         self.assertEqual(material2.title, "PS lecture notes")
-

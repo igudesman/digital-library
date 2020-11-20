@@ -1,67 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
 
-    {% block title %}<title>Local Library</title>{% endblock %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Добавление дополнительного статического CSS файла -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block title %}<title>Local Library</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'navbar/css/header-7.css' %}"/>
+    <link rel="stylesheet" href="{% static 'home/css/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'navbar/css/reset.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'material/css/bootstrap.min.css' %}" type="text/css"/>
+
+
+    <link rel="stylesheet" href="{% static 'material/css/style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'navbar/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'home/css/main.css' %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="{% static 'button.css' %}"/>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="manifest" href="{% static 'home/site.webmanifest' %}">
+
+    <!-- script
+				================================================== -->
+    <script src="{% static 'home/js/modernizr.js' %}"></script>
+
+    <script src="{% static 'home/js/extention/choices.js' %}" type="text/javascript"></script>
+
 </head>
 
-<body>
+<body id="top">
 
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-sm-2">
-            {% block sidebar %}
-            <ul class="sidebar-nav">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                {% if user.is_authenticated %}
-                <li>User: {{ user.get_username }}</li>
-                <li><a href="{% url 'logout'%}">Logout</a></li>
-                <li><a href="{% url 'password_change'%}?next={{request.path}}">Change password</a></li>
-                <li><a href="{% url 'upload'%}">Upload material</a></li>
-                {% else %}
-                <li><a href="{% url 'login'%}">Login</a></li>
-                <li><a href="{% url 'password_reset'%}">Reset password</a></li>
-                {% endif %}
-                <li><a href="{% url 'signup' %}">Registrate</a></li>
-                <li><a href="/admin/">Admin panel</a></li>
-            </ul>
-            {% endblock %}
-        </div>
-        <div class="col-sm-10 ">
-
-
-            {% block content %}{% endblock %}
-            {% block pagination %}
-            {% if is_paginated %}
-            <div class="pagination">
-          <span class="page-links">
-              {% if page_obj.has_previous %}
-                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
-              {% endif %}
-              <span class="page-current">
-                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-              </span>
-              {% if page_obj.has_next %}
-                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
-              {% endif %}
-          </span>
-            </div>
-            {% endif %}
-            {% endblock %}
-        </div>
-    </div>
-
-
+<!-- preloader================================================== -->
+<div id="preloader">
+    <div id="loader"></div>
 </div>
+
+{% include 'navbar.html' %}
+
+
+{% block content %}{% endblock %}
+
+<!-- Java Script
+================================================== -->
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'home/js/plugins.js' %}"></script>
+<script src="{% static 'home/js/main.js' %}"></script>
+
 </body>
 </html>

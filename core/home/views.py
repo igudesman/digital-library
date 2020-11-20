@@ -1,10 +1,17 @@
-
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse, StreamingHttpResponse, Http404
 from django.views import generic
+
 from search.models import Material
 from search.views import get_material_queryset
-from operator import attrgetter
+
+
+@login_required(redirect_field_name='login')
+def my_logout(request):
+    logout(request)
+    return render(request, "info_message.html", {'message': "You have been successfully logout!"})
+
 
 def home_view(request):
     """
@@ -12,19 +19,14 @@ def home_view(request):
     """
     context = {}
 
-    query = ""
+    query, category = "", "All categories"
     if request.POST:
-        print(request.POST)
         query = request.POST.get('search_field', "")
-        context['query'] = str(query)
+        category = request.POST.get('choices-single-defaul', 'All categories')
 
-    if query == "":
-        print("Empty request")
-        material_list = sorted(Material.objects.filter(visibility__icontains='1').all(), key=attrgetter('date_publication'), reverse=True)
-    else:
-        material_list = sorted(get_material_queryset(query), key=attrgetter('date_publication'), reverse=True)
-    context['material_list'] = material_list
-    return render(request, 'home/home.html', context)
+    context['material_list'] = get_material_queryset(query, category)
+
+    return render(request, 'new_home.html', context)
 
 
 class MaterialDetailView(generic.DetailView):

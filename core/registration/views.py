@@ -1,18 +1,12 @@
+# Create your views here.
+from django.conf import settings
+from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from django.shortcuts import render
 
-# Create your views here.
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
 from .forms import SignUpForm
-from django.contrib.auth.base_user import BaseUserManager
-from django.core.mail import send_mail
-from django.conf import settings
-from search.views import get_material_queryset
-from search.models import Material
-from operator import attrgetter
-from home.views import home_view
+
 
 def signup_view(request):
     """
