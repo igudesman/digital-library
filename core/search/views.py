@@ -10,9 +10,8 @@ from .models import Material
 
 
 # Create your views here.
-
 def is_moder(user):
-    return user.groups.filter(name='admin').exists()
+    return user.groups.filter(name='admin').exists() or user.is_staff
 
 
 # Word by word finding matches
@@ -25,7 +24,7 @@ def get_material_queryset(query, category):
     """
 
     # Self checking
-    assert category == 'Title' or category == 'All categories' or category == 'Tags'
+    assert category == 'Title' or category == 'All categories' or category == 'Tags' or category == 'Author'
     queryset = []
 
     queries = query.split(" ")  # Split query into words
@@ -49,9 +48,10 @@ def get_material_queryset(query, category):
             materials = Material.objects.filter(visibility='1').filter(
                 Q(tags__tag=q)
             )
-
         else:
-            raise RuntimeError("Check category names!")
+            materials = Material.objects.filter(visibility='1').filter(
+                Q(author__icontains=q)
+            )
 
         for material in materials:
             queryset.append(material)
@@ -70,38 +70,52 @@ def file_download(request, file_path):
         response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
         return response
     except Exception:
-        raise Http404
+        raise Http404("Material does not exist")
 
 
 @login_required(redirect_field_name='login')
 def material_page(request, material_id):
-    context = {}
-    material = Material.objects.get(pk=material_id)
-    return render(request, 'search/material_detail.html', {'material': material})
+    try:
+
+        material = Material.objects.get(pk=material_id)
+        if material.visibility == '0' and is_moder(user=request.user):
+            return render(request, 'info_message.html', {'message':
+                                                             "This material is hidden my moderator, "
+                                                             "to see it, please login as a moderator or super admin!"})
+        else:
+            return render(request, 'search/material_detail.html', {'material': material})
+
+    except Material.DoesNotExist:
+        raise Http404("Material does not exist")
 
 
 @login_required(redirect_field_name='login')
 @user_passes_test(is_moder)
 def change_view(request, material_id):
-    if not request.user.groups.filter(name='admin').exists():
-        return render(request, "not_a_moder.html")
+    try:
+        if not request.user.groups.filter(name='admin').exists():
+            return render(request, "not_a_moder.html")
 
-    material = Material.objects.get(pk=material_id)
-    material.visibility = "0" if material.visibility == "1" else "1"
-    material.save()
-    return moder_view(request)
+        material = Material.objects.get(pk=material_id)
+        material.visibility = "0" if material.visibility == "1" else "1"
+        material.save()
+        return moder_view(request)
+    except Material.DoesNotExist:
+        raise Http404("Material does not exist")
 
 
 @login_required(redirect_field_name='login')
 @user_passes_test(is_moder)
 def delete_view(request, material_id):
-    if not request.user.groups.filter(name='admin').exists():
-        return render(request, "not_a_moder.html")
+    try:
 
-    material = Material.objects.get(pk=material_id)
-    material.delete()
-    return moder_view(request)
+        if not request.user.groups.filter(name='admin').exists():
+            return render(request, "not_a_moder.html")
 
+        material = Material.objects.get(pk=material_id)
+        material.file.delete()
+        material.delete()
+        return moder_view(request)
 
-def is_moder(user):
-    return user.groups.filter(name='admin').exists()
+    except Material.DoesNotExist:
+        raise Http404("Material does not exist")

@@ -1,4 +1,5 @@
 {% load static %}
+{% load groups %}
 {% block navbar %}
 
     <header class="site-header">
@@ -10,9 +11,12 @@
                 <nav class="nav">
                     <ul class="nav__wrapper">
                         <li class="nav__item"><a href="{% url 'home' %}">Home</a></li>
-                        <li class="nav__item"><a href="{% url 'admin:index' %}">Admin panel</a></li>
-                        <li class="nav__item"><a href="{% url 'moder' %}">Moder page</a></li>
+
                         {% if user.is_authenticated %}
+                            {% if request.user|has_group:"admin" or request.user.is_staff %}
+                                <li class="nav__item"><a href="{% url 'admin:index' %}">Admin panel</a></li>
+                                <li class="nav__item"><a href="{% url 'moder' %}">Moder page</a></li>
+                            {% endif %}
                             <li class="nav__item"><a href="{% url 'upload' %}">Upload material</a></li>
                         {% endif %}
                     </ul>
@@ -20,7 +24,7 @@
             </div>
             <div class="site-header__end">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}">Logout</a>
+                    <a href="{% url 'my_logout' %}">Logout</a>
                 {% else %}
                     <ul class="nav__wrapper">
                         <li class="nav__item"><a href="{% url 'signup' %}">Sign Up</a></li>
