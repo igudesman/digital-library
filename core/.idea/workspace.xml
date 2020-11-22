@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aed91d1b-83c1-471c-85df-c69978561e5c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/templates/upload/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/upload/templates/upload/upload.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +156,8 @@
       <workItem from="1605877399846" duration="411000" />
       <workItem from="1605985524152" duration="1360000" />
       <workItem from="1605988246309" duration="9000" />
-      <workItem from="1606056607730" duration="557000" />
+      <workItem from="1606056607730" duration="1331000" />
+      <workItem from="1606057964031" duration="1467000" />
     </task>
     <task id="LOCAL-00001" summary="F">
       <created>1604952188080</created>
@@ -249,7 +250,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605985948116</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Revert for Daniil">
+      <created>1606057182205</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606057182205</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Revert for Daniil">
+      <created>1606057365052</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606057365052</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -352,10 +367,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="193" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1605114379976" />
-    <state x="609" y="81" width="809" height="904" key="CommitChangelistDialog2" timestamp="1606057182014">
+    <state x="609" y="81" width="809" height="904" key="CommitChangelistDialog2" timestamp="1606057364940">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="609" y="81" width="809" height="904" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1606057182014" />
+    <state x="609" y="81" width="809" height="904" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1606057364940" />
     <state x="-4" y="0" width="1928" height="1050" key="DiffContextDialog" timestamp="1605985907204">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -364,30 +379,30 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="-4" y="0" width="1928" height="1050" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1605514798814" />
-    <state width="1874" height="175" key="GridCell.Tab.0.bottom" timestamp="1606057331144">
+    <state width="1874" height="175" key="GridCell.Tab.0.bottom" timestamp="1606057937919">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331144" />
-    <state width="1874" height="175" key="GridCell.Tab.0.center" timestamp="1606057331143">
+    <state width="1874" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1606057937919" />
+    <state width="1874" height="175" key="GridCell.Tab.0.center" timestamp="1606057937918">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="175" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331143" />
-    <state width="1874" height="175" key="GridCell.Tab.0.left" timestamp="1606057331143">
+    <state width="1874" height="175" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1606057937918" />
+    <state width="1874" height="175" key="GridCell.Tab.0.left" timestamp="1606057937918">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="175" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331143" />
-    <state width="1874" height="175" key="GridCell.Tab.0.right" timestamp="1606057331144">
+    <state width="1874" height="175" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1606057937918" />
+    <state width="1874" height="175" key="GridCell.Tab.0.right" timestamp="1606057937918">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="175" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331144" />
+    <state width="1874" height="175" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1606057937918" />
     <state x="722" y="207" key="RollbackChangesDialog" timestamp="1605026291722">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="722" y="207" key="RollbackChangesDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1605026291722" />
-    <state x="76" y="254" width="808" height="530" key="Vcs.Push.Dialog.v2" timestamp="1606057186631">
+    <state x="76" y="254" width="808" height="530" key="Vcs.Push.Dialog.v2" timestamp="1606057369653">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="76" y="254" width="808" height="530" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1606057186631" />
+    <state x="76" y="254" width="808" height="530" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1606057369653" />
     <state x="0" y="0" width="1920" height="1044" key="VcsDiffUtil.ChangesDialog" timestamp="1605985725756">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
