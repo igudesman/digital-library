@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aed91d1b-83c1-471c-85df-c69978561e5c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/templates/upload/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/upload/templates/upload/upload.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JupyterTrust" id="130c2fbe-cc5f-498c-88d4-e1a7470e6b80" />
+  <component name="ProjectId" id="1k4Fo7zjf1MgzjWPTzi3CCoeW2B" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/home/static/material/img" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/home/static/home" />
+      <recent name="$PROJECT_DIR$/home/static/home/img" />
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/home/static/material/img" />
+      <recent name="$PROJECT_DIR$/home/static" />
+      <recent name="$PROJECT_DIR$/search/templates/search" />
+      <recent name="$PROJECT_DIR$/moderator/templates" />
+      <recent name="$PROJECT_DIR$/home" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.core">
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="core" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/search" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/search/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="core" type="Python.DjangoServer" factoryName="Django server">
+      <module name="core" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="core.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.views" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aed91d1b-83c1-471c-85df-c69978561e5c" name="Default Changelist" comment="" />
+      <created>1604952128535</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604952128535</updated>
+      <workItem from="1604952129586" duration="93000" />
+      <workItem from="1604982518482" duration="178000" />
+      <workItem from="1604982712690" duration="1230000" />
+      <workItem from="1604999405318" duration="12000" />
+      <workItem from="1605023541125" duration="2775000" />
+      <workItem from="1605026337590" duration="1768000" />
+      <workItem from="1605030754625" duration="13000" />
+      <workItem from="1605070146607" duration="651000" />
+      <workItem from="1605095657550" duration="4102000" />
+      <workItem from="1605106636567" duration="7680000" />
+      <workItem from="1605114861555" duration="102000" />
+      <workItem from="1605155300368" duration="1320000" />
+      <workItem from="1605176374792" duration="3374000" />
+      <workItem from="1605186057712" duration="317000" />
+      <workItem from="1605205923294" duration="18000" />
+      <workItem from="1605277469589" duration="765000" />
+      <workItem from="1605292400948" duration="209000" />
+      <workItem from="1605379061921" duration="1243000" />
+      <workItem from="1605436059411" duration="599000" />
+      <workItem from="1605462550069" duration="467000" />
+      <workItem from="1605503685433" duration="1068000" />
+      <workItem from="1605514762066" duration="780000" />
+      <workItem from="1605517700343" duration="164000" />
+      <workItem from="1605520893518" duration="18000" />
+      <workItem from="1605547619772" duration="4738000" />
+      <workItem from="1605632297637" duration="3319000" />
+      <workItem from="1605673544222" duration="398000" />
+      <workItem from="1605716776273" duration="599000" />
+      <workItem from="1605772540283" duration="16000" />
+      <workItem from="1605801133173" duration="2307000" />
+      <workItem from="1605811876785" duration="321000" />
+      <workItem from="1605848340909" duration="64000" />
+      <workItem from="1605856086499" duration="372000" />
+      <workItem from="1605864052339" duration="599000" />
+      <workItem from="1605877399846" duration="411000" />
+      <workItem from="1605985524152" duration="1360000" />
+      <workItem from="1605988246309" duration="9000" />
+      <workItem from="1606056607730" duration="557000" />
+    </task>
+    <task id="LOCAL-00001" summary="F">
+      <created>1604952188080</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604952188080</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Code cleanup">
+      <created>1605096549270</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605096549270</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Search engine, small fixes">
+      <created>1605098914248</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605098914248</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add daniil code">
+      <created>1605099391548</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605099391548</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add upload.html">
+      <created>1605114906232</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605114906232</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Form validation">
+      <created>1605179517099</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605179517099</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Form validation">
+      <created>1605462955153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605462955153</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix -&gt; redirect to login page">
+      <created>1605503800396</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605503800396</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Search sorting by time of publication">
+      <created>1605504698543</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605504698543</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Search sorting by time of publication">
+      <created>1605634139556</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605634139556</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Bug fix + deleting not need files + check not to look at hidden files">
+      <created>1605635590371</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605635590371</updated>
+    </task>
+    <task id="LOCAL-00012" summary="raising 404 when assessing illegal material, custom my_logout, deleting file with material when deleting material, ready to prod">
+      <created>1605803156395</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605803156395</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Revert for Daniil">
+      <created>1605985948116</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1605985948116</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/home/shamil/PycharmProjects/digital-library/core/home/static/home/js" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/home/shamil/PycharmProjects/digital-library/core" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+        <entry key="2" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="F" />
+    <MESSAGE value="Code cleanup" />
+    <MESSAGE value="Search engine, small fixes" />
+    <MESSAGE value="Add daniil code" />
+    <MESSAGE value="Add upload.html" />
+    <MESSAGE value="Form validation" />
+    <MESSAGE value="Fix -&gt; redirect to login page" />
+    <MESSAGE value="Search sorting by time of publication" />
+    <MESSAGE value="Bug fix + deleting not need files + check not to look at hidden files" />
+    <MESSAGE value="raising 404 when assessing illegal material, custom my_logout, deleting file with material when deleting material, ready to prod" />
+    <MESSAGE value="Revert for Daniil" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert for Daniil" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="193" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605114379976">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="193" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1605114379976" />
+    <state x="609" y="81" width="809" height="904" key="CommitChangelistDialog2" timestamp="1606057182014">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="609" y="81" width="809" height="904" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1606057182014" />
+    <state x="-4" y="0" width="1928" height="1050" key="DiffContextDialog" timestamp="1605985907204">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="-4" y="0" width="1928" height="1050" key="DiffContextDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1605985907204" />
+    <state x="-4" y="0" width="1928" height="1050" key="FileChooserDialogImpl" timestamp="1605514798814">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="-4" y="0" width="1928" height="1050" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1605514798814" />
+    <state width="1874" height="175" key="GridCell.Tab.0.bottom" timestamp="1606057331144">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331144" />
+    <state width="1874" height="175" key="GridCell.Tab.0.center" timestamp="1606057331143">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="175" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331143" />
+    <state width="1874" height="175" key="GridCell.Tab.0.left" timestamp="1606057331143">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="175" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331143" />
+    <state width="1874" height="175" key="GridCell.Tab.0.right" timestamp="1606057331144">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="175" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1606057331144" />
+    <state x="722" y="207" key="RollbackChangesDialog" timestamp="1605026291722">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="722" y="207" key="RollbackChangesDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1605026291722" />
+    <state x="76" y="254" width="808" height="530" key="Vcs.Push.Dialog.v2" timestamp="1606057186631">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="76" y="254" width="808" height="530" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1606057186631" />
+    <state x="0" y="0" width="1920" height="1044" key="VcsDiffUtil.ChangesDialog" timestamp="1605985725756">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="0" y="0" width="1920" height="1044" key="VcsDiffUtil.ChangesDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1605985725756" />
+    <state x="96" y="100" width="1728" height="850" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1605025117961">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="96" y="100" width="1728" height="850" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1605025117961" />
+    <state x="618" y="213" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605985591128">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="618" y="213" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1605985591128" />
+    <state x="764" y="440" width="392" height="172" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605106654916">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="764" y="440" width="392" height="172" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1044@0.0.1920.1044" timestamp="1605106654916" />
+    <state x="726" y="420" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605877809635">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="726" y="420" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1605877809635" />
+    <state x="623" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1606057102501">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="623" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1606057102501" />
+  </component>
+</project>
